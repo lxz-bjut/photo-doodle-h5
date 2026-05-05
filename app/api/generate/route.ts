@@ -38,7 +38,9 @@ export async function POST(req: NextRequest) {
       .png()
       .toBuffer();
 
-    return new Response(output, {
+    const body = new Uint8Array(output);
+
+    return new Response(body, {
       status: 200,
       headers: {
         "Content-Type": "image/png",
